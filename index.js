@@ -61,12 +61,16 @@ client.on('authenticated', session => {
 })
 
 client.on('auth_failure', msg => {
-    console.error("[DippiBOT] Há um erro na autenticação: " + '"' + msg + '"');
+    fs.unlink('session.json', function (err){
+        if (err) throw err;
+        console.log('[QLBot] Para confirmar a inicialização, digite o comando:', 'npm start', 'novamente');
+    })
 })
 
 // Bot ready
 client.on('ready', () => {
-    console.log("[DippiBOT] O BOT foi inicializado corretamente!");
+    console.clear();
+    console.log("[QLBOT] O BOT foi inicializado corretamente!");
 })
 
 
@@ -76,7 +80,7 @@ client.on('ready', () => {
 client.on('message', msg => {
     // Ajuda
     if(msg.body == String(prefix + "ajuda")) {
-        client.sendMessage(msg.from, String(`[Dippi Jeans]\n\n` + prefix + 'ajuda - Este comando\n\n' + prefix + 'moedas - Mostra quantas moedas você tem\n\n' + prefix + 'nivel - Mostra o seu nível atual de acordo com a quantidade de moedas\n\n' + prefix + 'itens - Mostra os itens da loja\n\n' + prefix + 'comprar spoiler - Para a compra de spoilers\n\n'
+        client.sendMessage(msg.from, String(`[QLBOT]\n\n` + prefix + 'ajuda - Este comando'
         ))
     } 
     
